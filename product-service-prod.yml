@@ -1,0 +1,19 @@
+server:
+  port: 0 # Let Eureka assign a random port in prod
+
+spring:
+  datasource:
+    url: jdbc:mysql://prod-db-endpoint:3306/productdb
+    username: prod_user
+    password: ${PRODUCT_DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate   # safer in prod
+    show-sql: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
